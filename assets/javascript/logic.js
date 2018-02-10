@@ -3,22 +3,24 @@
   //Query url with api key
   var buttonArr = []
  
-  var queryURL = "https://api.giphy.com/v1/gifs?api_key=ICK0911MJ3OSyCVmYJsRtqgKZ0CzLbhW"
+  var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=ICK0911MJ3OSyCVmYJsRtqgKZ0CzLbhW&limit=10&rating=G"
 
   $.ajax({
     url: queryURL,
     method: "GET"
   }).then(function(response) {
-    console.log(response.data);
-    console.log(response.data.image_original_url);
+    console.log(response);
+    console.log(response.data[0].images.original.url);
 
-    var gif = (response.data.image_original_url);
+    for (var i = 0; i < response.length; i++) {
+      var gif = (response[i].url);
+    }
 
     var imageUrl = $("<img>");
 
     imageUrl.attr("src", gif);
 
-    $("#button-container").append(imageUrl)
+    $("#button-container").append(imageUrl);
   });
 
 
