@@ -69,7 +69,7 @@ $("button").on("click", function() {
       var tvImage = $("<img>")
       console.log(results[i]);
 
-      tvImage.attr("src", results[i].images.fixed_height.url);
+      tvImage.attr("src", results[i].images.fixed_height_still.url);
 
       showDiv.append(p);
       showDiv.append(tvImage);
@@ -77,19 +77,42 @@ $("button").on("click", function() {
       $("#gif-content").prepend(showDiv);
     }
 
-    // function btnAdd() {
-    //   for (var i = 0; i < tvShowsArr.length; i++) {
-    //     var buttons = $("<button>");
-    //     buttons.addClass("tv-btn")
-    //     buttons.text(tvShowsArr[i]);
+    function btnAdd() {
 
-    //     $("#button-container").append(buttons);
-    //   };
-    //   btnAdd ();
-     
-    // }
+      for (var i = 0; i < tvShowsArr.length; i++) {
+
+        var buttons = $("<button>");
+
+        buttons.addClass("btn-clss")
+
+        buttons.text(tvShowsArr);
+
+        $("#button-container").append(buttons);
+      };
+
+      btnAdd ();
+
+      
+    }
+
   });
 
+
+
+//   $("btn-clss").on("click", function() {
+
+//     var dataState = 
+
+//     var state = $(this).attr("data-state");
+
+//     if (state === "still") {
+//         $(this).attr("src", results[i].images.fixed_height_still.url);
+//         $(this).attr("data-state", "animate");
+//       } else {
+//         $(this).attr("src", results[i].images.fixed_height.url);
+//         $(this).attr("data-state", "still");
+//       }
+// });
 
 ////////////////////////////////////////////////
     // for (var i = 0; i < response.data.length; i++) {

@@ -1,0 +1,58 @@
+.btn-clss { 
+  box-shadow: 0 5px 15px 2px rgba(0, 0, 0, 0.1);
+  opacity: 0; /* hide the hover shadow */
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 50%;
+  background-color: #E2D7F4;
+}
+
+.btn-clss {  
+  opacity: 1; /* show the hover shadow */
+  
+}
+
+
+.grow:hover {
+
+	-webkit-transform: scale(1.3);
+	-ms-transform: scale(1.3);
+  transform: scale(1.3);
+
+}
+
+#button-container {
+	background-color: #8D1689;
+}
+
+.jumbotron {
+	text-align: center;
+	background-color: #5D29B7;
+
+}
+
+h1 {
+	font-size:140%;
+	text-shadow: 20%;
+}
+/*/////
+$colors:
+links/light
+#E2D7F4,
+
+ background header
+#5D29B7,
+
+ icon/ buttons
+#8D1689,
+
+ boldtext red
+#C32D50,
+
+ footer dark
+#300D15;
+
+////*/
+
+/*//////////////////////////////*/
+
+/*///////////////////////////////*/
