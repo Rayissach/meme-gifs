@@ -1,26 +1,69 @@
 //When button clicked start this function
+
+//Theme TV Shows:
+  //The Amazing World of Gumball
+  //Grim Adventures of Billy and Mandy
+  //Spongebob
+  //Teen Titans
+  //Teen Titans Go
+  //Adventure Time
+  //The Marvelous Misadventures of Flapjack
+  //Chowder
+  //Dexter's Laboratoy
+  //Regular Show
+  //Code Name Kids Next Door
+  //Samuri Jack
+  //Dragon Ball Z
+  //Naruto
+  //Family Guy
+  //American Dad
+
 // $("#button-container").on("click", function() {
   //Query url with api key
+
   var buttonArr = []
+  var 
  
-  var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=ICK0911MJ3OSyCVmYJsRtqgKZ0CzLbhW&limit=10&rating=G"
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + "api_key=ICK0911MJ3OSyCVmYJsRtqgKZ0CzLbhW&limit=10&rating=G"
 
   $.ajax({
     url: queryURL,
     method: "GET"
   }).then(function(response) {
     console.log(response);
-    console.log(response.data[0].images.original.url);
 
-    for (var i = 0; i < response.length; i++) {
-      var gif = (response[i].url);
-    }
 
-    var imageUrl = $("<img>");
 
-    imageUrl.attr("src", gif);
+    for (var i = 0; i < response.data.length; i++) {
+      buttonArr.push(response.data[i].images.original.url);
+      // var gifObj = imageObj[i]["images"];
+      // var imageObj = response.data[i].images.original.url;
+
+       // for (var j = 0; j < gifObj.length; j++) {
+       //   console.log(gifObj[j].original.url);
+       // }
+      // for (var j = 0; j < gifObj.length; j++) {
+
+      //  buttonArr.push(gifObj[j].original.url);
+      // }
+      // console.log(imageObj[i]);
+    };
+    
+console.log(buttonArr);
+
+
+
+   
+
+    for (var i = 0; i < buttonArr.length; i++) {
+       var imageUrl = $("<img>");
+
+    imageUrl.attr("src", buttonArr[i]);
 
     $("#button-container").append(imageUrl);
+
+    }
+    }
   });
 
 
