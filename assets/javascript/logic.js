@@ -18,13 +18,39 @@
   //Family Guy
   //American Dad
 
-// $("#button-container").on("click", function() {
+$("button").on("click", function() {
   //Query url with api key
 
   var buttonArr = []
-  var 
+  var tvShowsArr = ["The-Amazing-World-of-Gumball",
+  "Grim Adventures of Billy and Mandy",
+  "Spongebob",
+  "Teen Titans",
+ "Teen Titans Go",
+  "Adventure Time",
+  "The Marvelous Misadventures of Flapjack",
+  "Chowder",
+  "Dexter's Laboratoy",
+  "Regular Show",
+  "Code Name Kids Next Door",
+  "Samurai Jack",
+  "Dragon Ball Z",
+  "Naruto",
+  "Family Guy",
+  "American Dad"]
+
+  var tvShows = $(this).attr("data-show");
  
-  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + "api_key=ICK0911MJ3OSyCVmYJsRtqgKZ0CzLbhW&limit=10&rating=G"
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" 
+  +  tvShows
+  + "&api_key=ICK0911MJ3OSyCVmYJsRtqgKZ0CzLbhW"
+    
+    + "&limit=10&rating=G"
+
+    
+
+   console.log(tvShowsArr);
+   console.log(queryURL);
 
   $.ajax({
     url: queryURL,
@@ -32,10 +58,44 @@
   }).then(function(response) {
     console.log(response);
 
+    var results = response.data;
+
+    for (var i = 0; i < results.length; i++) {
+
+      var showDiv = $("<div>")
+
+      var p = $("<p>").text("Rating: " + results[i].rating);
+
+      var tvImage = $("<img>")
+      console.log(results[i]);
+
+      tvImage.attr("src", results[i].images.fixed_height.url);
+
+      showDiv.append(p);
+      showDiv.append(tvImage);
+
+      $("#gif-content").prepend(showDiv);
+    }
+
+    // function btnAdd() {
+    //   for (var i = 0; i < tvShowsArr.length; i++) {
+    //     var buttons = $("<button>");
+    //     buttons.addClass("tv-btn")
+    //     buttons.text(tvShowsArr[i]);
+
+    //     $("#button-container").append(buttons);
+    //   };
+    //   btnAdd ();
+     
+    // }
+  });
 
 
-    for (var i = 0; i < response.data.length; i++) {
-      buttonArr.push(response.data[i].images.original.url);
+////////////////////////////////////////////////
+    // for (var i = 0; i < response.data.length; i++) {
+    //   buttonArr.push(response.data[i].images.original.url);
+//////////////////////////////////////////////
+
       // var gifObj = imageObj[i]["images"];
       // var imageObj = response.data[i].images.original.url;
 
@@ -47,26 +107,28 @@
       //  buttonArr.push(gifObj[j].original.url);
       // }
       // console.log(imageObj[i]);
-    };
+///////////////////////////////////////////////////
+
+//     };
     
-console.log(buttonArr);
+// console.log(buttonArr);
 
 
 
    
 
-    for (var i = 0; i < buttonArr.length; i++) {
-       var imageUrl = $("<img>");
+  //   for (var i = 0; i < buttonArr.length; i++) {
+  //      var imageUrl = $("<img>");
 
-    imageUrl.attr("src", buttonArr[i]);
+  //   imageUrl.attr("src", buttonArr[i]);
 
-    $("#button-container").append(imageUrl);
+  //   $("#button-container").append(imageUrl);
 
-    }
-    }
-  });
+  //   }
+  //   }
+  // });
 
-
+///////////////////////////////////////
 // });
 
   // $("button").on("click", function() {
@@ -135,11 +197,11 @@ console.log(buttonArr);
 //         .then(function(response) {
 //           var results = response.data;
  // function btnAdd () {
- // 	for (var i = 0; i < wolrdStar.length; i++) {
- // 		console.log(wolrdStar[i]);
+ // 	for (var i = 0; i < animals.length; i++) {
+ // 		console.log(animals[i]);
  // 		var buttons = $("<button>");
  // 		buttons.addClass("btn gifs")
- // 		buttons.text(wolrdStar[i]);
+ // 		buttons.text(animals[i]);
  		
  // 		$("#button-container").append(buttons);
  // 	}
@@ -162,3 +224,5 @@ console.log(buttonArr);
  //        .then(function(response) {
  //          var results = response.data;
  // })
+
+});
