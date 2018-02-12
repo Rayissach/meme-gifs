@@ -1,102 +1,128 @@
 //When button clicked start this function
 
 //Theme TV Shows:
-  //The Amazing World of Gumball
-  //Grim Adventures of Billy and Mandy
-  //Spongebob
-  //Teen Titans
-  //Teen Titans Go
-  //Adventure Time
-  //The Marvelous Misadventures of Flapjack
-  //Chowder
-  //Dexter's Laboratoy
-  //Regular Show
-  //Code Name Kids Next Door
-  //Samuri Jack
-  //Dragon Ball Z
-  //Naruto
-  //Family Guy
-  //American Dad
+//The Amazing World of Gumball
+//Grim Adventures of Billy and Mandy
+//Spongebob
+//Teen Titans
+//Teen Titans Go
+//Adventure Time
+//The Marvelous Misadventures of Flapjack
+//Chowder
+//Dexter's Laboratoy
+//Regular Show
+//Code Name Kids Next Door
+//Samuri Jack
+//Dragon Ball Z
+//Naruto
+//Family Guy
+//American Dad
+$(document).ready(function() {
+var showCount = 0;
+var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+    tvShows +
+    "&api_key=ICK0911MJ3OSyCVmYJsRtqgKZ0CzLbhW"
 
-$("button").on("click", function() {
-  //Query url with api key
+    +
+    "&limit=10&rating=G"
+var buttonArr = []
+var tvShowsArr = ["The-Amazing-World-of-Gumball",
+    "Grim Adventures of Billy and Mandy",
+    "Spongebob",
+    "Teen Titans",
+    "Teen Titans Go",
+    "Adventure Time",
+    "The Marvelous Misadventures of Flapjack",
+    "Chowder",
+    "Dexter's Laboratoy",
+    "Regular Show",
+    "Code Name Kids Next Door",
+    "Samurai Jack",
+    "Dragon Ball Z",
+    "Naruto",
+    "Family Guy",
+    "American Dad"
+]
 
-  var buttonArr = []
-  var tvShowsArr = ["The-Amazing-World-of-Gumball",
-  "Grim Adventures of Billy and Mandy",
-  "Spongebob",
-  "Teen Titans",
- "Teen Titans Go",
-  "Adventure Time",
-  "The Marvelous Misadventures of Flapjack",
-  "Chowder",
-  "Dexter's Laboratoy",
-  "Regular Show",
-  "Code Name Kids Next Door",
-  "Samurai Jack",
-  "Dragon Ball Z",
-  "Naruto",
-  "Family Guy",
-  "American Dad"]
+$("#btns-hit").on("click", function() {
+    //Query url with api key
 
-  var tvShows = $(this).attr("data-show");
- 
-  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" 
-  +  tvShows
-  + "&api_key=ICK0911MJ3OSyCVmYJsRtqgKZ0CzLbhW"
-    
-    + "&limit=10&rating=G"
 
-    
+    var tvShows = $(this).attr("data-show");
 
-   console.log(tvShowsArr);
-   console.log(queryURL);
+    console.log(tvShowsArr);
+    console.log(queryURL);
 
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function(response) {
-    console.log(response);
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response) {
+        console.log(response);
 
-    var results = response.data;
+        var results = response.data;
 
-    for (var i = 0; i < results.length; i++) {
+        for (var i = 0; i < results.length; i++) {
 
-      var showDiv = $("<div>")
+            var showDiv = $("<div>")
 
-      var p = $("<p>").text("Rating: " + results[i].rating);
+            var p = $("<p>").text("Rating: " + results[i].rating);
 
-      var tvImage = $("<img>")
-      console.log(results[i]);
+            var tvImage = $("<img>")
+            console.log(results[i]);
 
-      tvImage.attr("src", results[i].images.fixed_height_still.url);
+            tvImage.attr("src", results[i].images.fixed_height_still.url);
 
-      showDiv.append(p);
-      showDiv.append(tvImage);
+            showDiv.append(p);
+            showDiv.append(tvImage);
 
-      $("#gif-content").prepend(showDiv);
-    }
+            $("#gif-content").prepend(showDiv);
+        };
 
-    function btnAdd() {
+        function btnAdd() {
 
-      for (var i = 0; i < tvShowsArr.length; i++) {
 
-        var buttons = $("<button>");
+          for (var i = 0; i < tvShowsArr.length; i++) {
 
-        buttons.addClass("btn-clss")
+            var buttons = $("<button>");
 
-        buttons.text(tvShowsArr);
+            buttons.addClass("btn-clss")
 
-        $("#button-container").append(buttons);
-      };
+            buttons.text(tvShowsArr);
 
-      btnAdd ();
+            $("#button-container").append(buttons);
+          };
 
-      
-    }
+          btnAdd ();
 
-  });
 
+
+        // }
+
+    });
+    // function btnAdd {
+
+
+
+    $("#btn-primary").on("click", function(event) {
+        event.preventDefault();
+
+        console.log("event");
+
+        //               searchShow = $("#tvShowSearch1").val().trim();
+
+        //               var gifItem = $("<button>");
+
+        //               gifItem.attr("id", "tv-btn-" + showCount);
+        // gifItem.append(" " + searchShow);
+
+        // showCount++;
+        // var searchURL = queryURL + searchTerm;
+
+        //   console.log("add name");
+
+        // btnAdd(searchURL);
+    });
+};
 
 
 //   $("btn-clss").on("click", function() {
@@ -115,92 +141,92 @@ $("button").on("click", function() {
 // });
 
 ////////////////////////////////////////////////
-    // for (var i = 0; i < response.data.length; i++) {
-    //   buttonArr.push(response.data[i].images.original.url);
+// for (var i = 0; i < response.data.length; i++) {
+//   buttonArr.push(response.data[i].images.original.url);
 //////////////////////////////////////////////
 
-      // var gifObj = imageObj[i]["images"];
-      // var imageObj = response.data[i].images.original.url;
+// var gifObj = imageObj[i]["images"];
+// var imageObj = response.data[i].images.original.url;
 
-       // for (var j = 0; j < gifObj.length; j++) {
-       //   console.log(gifObj[j].original.url);
-       // }
-      // for (var j = 0; j < gifObj.length; j++) {
+// for (var j = 0; j < gifObj.length; j++) {
+//   console.log(gifObj[j].original.url);
+// }
+// for (var j = 0; j < gifObj.length; j++) {
 
-      //  buttonArr.push(gifObj[j].original.url);
-      // }
-      // console.log(imageObj[i]);
+//  buttonArr.push(gifObj[j].original.url);
+// }
+// console.log(imageObj[i]);
 ///////////////////////////////////////////////////
 
 //     };
-    
+
 // console.log(buttonArr);
 
 
 
-   
 
-  //   for (var i = 0; i < buttonArr.length; i++) {
-  //      var imageUrl = $("<img>");
 
-  //   imageUrl.attr("src", buttonArr[i]);
+//   for (var i = 0; i < buttonArr.length; i++) {
+//      var imageUrl = $("<img>");
 
-  //   $("#button-container").append(imageUrl);
+//   imageUrl.attr("src", buttonArr[i]);
 
-  //   }
-  //   }
-  // });
+//   $("#button-container").append(imageUrl);
+
+//   }
+//   }
+// });
 
 ///////////////////////////////////////
 // });
 
-  // $("button").on("click", function() {
-  //     // Grabbing and storing the data-animal property value from the button
-  //     var wolrdStar = $(this).attr("button-container");
+// $("button").on("click", function() {
+//     // Grabbing and storing the data-animal property value from the button
+//     var wolrdStar = $(this).attr("button-container");
 
-  //     // Constructing a queryURL using the animal name
-  //     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-  //       wolrdStar + "&api_key=dc6zaTOxFJmzC";
+//     // Constructing a queryURL using the animal name
+//     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+//       wolrdStar + "&api_key=dc6zaTOxFJmzC";
 
-  //     $.ajax({
-  //         url: queryURL,
-  //         method: "GET"
-  //       })
-  //       .then(function(response) {
-  //         console.log(queryURL);
+//     $.ajax({
+//         url: queryURL,
+//         method: "GET"
+//       })
+//       .then(function(response) {
+//         console.log(queryURL);
 
-  //         console.log(response);
-  //         var results = response.data;
+//         console.log(response);
+//         var results = response.data;
 
-  //         // Looping through each result item
+//         // Looping through each result item
 
-  //         for (var i = 0; i < results.length; i++) {
+//         for (var i = 0; i < results.length; i++) {
 
-  //           // Creating and storing a div tag
-  //           var gifDiv = $("<div>");
+//           // Creating and storing a div tag
+//           var gifDiv = $("<div>");
 
-  //           // Creating a paragraph tag with the result item's rating
-  //           console.log(results[i])
-  //           var restrict = $("<p>").text("Rating: " + results[i].rating);
+//           // Creating a paragraph tag with the result item's rating
+//           console.log(results[i])
+//           var restrict = $("<p>").text("Rating: " + results[i].rating);
 
-  //           // Creating and storing an image tag
-  //           var WorldStarImage = $("<img>");
-  //           // Setting the src attribute of the image to a property pulled off the result item
-  //           WorldStarImage.attr("src", results[i].images.fixed_height.url);
+//           // Creating and storing an image tag
+//           var WorldStarImage = $("<img>");
+//           // Setting the src attribute of the image to a property pulled off the result item
+//           WorldStarImage.attr("src", results[i].images.fixed_height.url);
 
-  //           // Appending the paragraph and image tag to the animalDiv
-  //           animalDiv.append(p);
-  //           animalDiv.append(animalImage);
+//           // Appending the paragraph and image tag to the animalDiv
+//           animalDiv.append(p);
+//           animalDiv.append(animalImage);
 
-  //           // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
-  //           $("#gif-content").prepend(animalDiv);
-  //         }
-  //       });
-  //   });
-  
+//           // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
+//           $("#gif-content").prepend(animalDiv);
+//         }
+//       });
+//   });
 
 
- // var queryUrl = "http://api.giphy.com/v1/gifs/search?q=&api_key=dc6zaTOxFJmzC&limit=10"
+
+// var queryUrl = "http://api.giphy.com/v1/gifs/search?q=&api_key=dc6zaTOxFJmzC&limit=10"
 
 //  var animals = ["sloth","dog","panda"];
 
@@ -219,33 +245,33 @@ $("button").on("click", function() {
 //         })
 //         .then(function(response) {
 //           var results = response.data;
- // function btnAdd () {
- // 	for (var i = 0; i < animals.length; i++) {
- // 		console.log(animals[i]);
- // 		var buttons = $("<button>");
- // 		buttons.addClass("btn gifs")
- // 		buttons.text(animals[i]);
- 		
- // 		$("#button-container").append(buttons);
- // 	}
- // }
+// function btnAdd () {
+//  for (var i = 0; i < animals.length; i++) {
+//    console.log(animals[i]);
+//    var buttons = $("<button>");
+//    buttons.addClass("btn gifs")
+//    buttons.text(animals[i]);
 
- // btnAdd();
+//    $("#button-container").append(buttons);
+//  }
+// }
+
+// btnAdd();
 
 
 // //grabs the text from the button clicked with a class animal.
 //  $(document).on("click",".animals", function(){
-//  	console.log($(this).text())
- 	// var btnText = "";
- 	// var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-  //       person + "&api_key=dc6zaTOxFJmzC&limit=10";
+//    console.log($(this).text())
+// var btnText = "";
+// var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+//       person + "&api_key=dc6zaTOxFJmzC&limit=10";
 
-  //     $.ajax({
-  //         url: queryURL,
-  //         method: "GET"
-  //       })
- //        .then(function(response) {
- //          var results = response.data;
- // })
+//     $.ajax({
+//         url: queryURL,
+//         method: "GET"
+//       })
+//        .then(function(response) {
+//          var results = response.data;
+// })
 
 });
