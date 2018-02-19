@@ -1,8 +1,9 @@
 // function btnArr() {
 $(".btns-hit").on("click", function btnArr() {
     //Query url with api key
+    var tvShows = $(this).attr("data-show");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        tvShowsArr +
+        tvShows +
         "&api_key=ICK0911MJ3OSyCVmYJsRtqgKZ0CzLbhW" +
         "&limit=10&rating=G"
     var tvShowsArr = ["The-Amazing-World-of-Gumball",
@@ -52,7 +53,7 @@ $(".btns-hit").on("click", function btnArr() {
 
          btnAdd();
 
-    var tvShows = $(this).attr("data-show");
+    
 
     console.log(tvShowsArr);
     console.log(queryURL);
