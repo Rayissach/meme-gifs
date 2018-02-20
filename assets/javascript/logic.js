@@ -46,7 +46,7 @@ btnAdd();
 
 
 
-$(".btn-clss").on("click", function getdata() {
+$(".btn-clss").on("click", function() {
     //Query url with api key
     var tvShows = $(this).attr("data-show");
 
