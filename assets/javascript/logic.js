@@ -1,59 +1,61 @@
-// function btnArr() {
-$(".btns-hit").on("click", function btnArr() {
+var tvShowsArr = ["The-Amazing World of Gumball",
+    "Grim Adventures of Billy and Mandy",
+    "Spongebob",
+    "Teen Titans",
+    "Teen Titans Go",
+    "Adventure Time",
+    "The Marvelous Misadventures of Flapjack",
+    "Chowder",
+    "Dexter's Laboratoy",
+    "Regular Show",
+    "Code Name Kids Next Door",
+    "Samurai Jack",
+    "Dragon Ball Z",
+    "Naruto",
+    "Family Guy",
+    "American Dad"
+];
+
+function btnAdd() {
+
+    $(".gif-btn-class").html("");
+
+
+    for (var i = 0; i < tvShowsArr.length; i++) {
+
+        console.log(tvShowsArr[i])
+
+        $(".gif-btn-class").append("<button class='btn-clss grow btns-hit' data-show='" + tvShowsArr[i] + "'>" + tvShowsArr[i] + "</button>");
+
+    }
+
+}
+
+$("#buttonSearch").on("click", function(event) {
+
+    event.preventDefault();
+
+    var shows = $("#tvShowSearch").val().trim();
+
+    tvShowsArr.push(shows);
+
+    btnAdd();
+});
+
+btnAdd();
+
+
+
+$(".btn-clss").on("click", function getdata() {
     //Query url with api key
     var tvShows = $(this).attr("data-show");
+
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         tvShows +
         "&api_key=ICK0911MJ3OSyCVmYJsRtqgKZ0CzLbhW" +
         "&limit=10&rating=G"
-    var tvShowsArr = ["The-Amazing-World-of-Gumball",
-        "Grim Adventures of Billy and Mandy",
-        "Spongebob",
-        "Teen Titans",
-        "Teen Titans Go",
-        "Adventure Time",
-        "The Marvelous Misadventures of Flapjack",
-        "Chowder",
-        "Dexter's Laboratoy",
-        "Regular Show",
-        "Code Name Kids Next Door",
-        "Samurai Jack",
-        "Dragon Ball Z",
-        "Naruto",
-        "Family Guy",
-        "American Dad"
-    ];
 
 
-       function btnAdd() {
-
-
-            for (var i = 0; i < tvShowsArr.length; i++) {
-                var buttons = $("<button>");
-
-                buttons.addClass("btn-clss")
-
-                buttons.text(tvShowsArr[i]);
-
-                $(".gif-btn-class").append(tvShowsArr[i]);
-            };
-        };
-
-        $("#btn-search").on("click", function(event) {
-
-            event.preventDefault();
-
-            var shows = $("#tvShowSearch").val();
-
-            tvShowsArr[i].push(shows);
-
-            btnAdd();
-            console.log("hello")
-        });
-
-         btnAdd();
-
-    
 
     console.log(tvShowsArr);
     console.log(queryURL);
@@ -97,53 +99,20 @@ $(".btns-hit").on("click", function btnArr() {
     });
 });
 
+$("body").on("click", ".gif", function() {
+    var src = $(this).attr("src");
 
-// $("#btn-primary").on("click", function btnAdd(event) {
-//     event.preventDefault();
+    if ($(this).hasClass('playing')) {
 
-//     console.log("event");
+        $(this).attr('src', src.replace(/\.gif/i, "_s.gif"))
 
-//     searchShow = $("#tvShowSearch1").val().trim();
+        $(this).removeClass('playing');
 
-//     var gifItem = $("<button>");
+    } else {
 
-//     gifItem.attr("id", "tv-btn-" + showCount);
-//     gifItem.append(" " + searchShow);
+        $(this).addClass('playing');
 
-//     showCount++;
-//     var searchURL = queryURL + searchTerm;
+        $(this).attr('src', src.replace(/\_s.gif/i, ".gif"))
+    }
+});
 
-//     console.log("add name");
-
-//     btnAdd.push(gifItem);
-// });
-
-// });
-
-// function btnAdd() {
-//   btnArr();
-
-//   $("#tvShowSearch1").html("");
-
-//   for (var i = 0; i < tvShowsArr.length; i++) {
-
-//     console.log(tvShowsArr[i]);
-
-//     $("#button-container").append("<button class='userMeme' data-meme='" + tvShowsArr[i] +"'>" + tvShowsArr[i] + "</button>");
-//   }
-
-// };
-// btnAdd();
-
-// $("#btn-search").on("click", function(event) {
-
-//   event.preventDefault();
-
-//   var show = $("#tvShowSearch1").val();
-
-//   show.push(show);
-
-//   btnAdd();
-// });
-
-// btnAdd();
