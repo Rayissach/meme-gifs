@@ -9,6 +9,7 @@ body {
   transition: opacity 0.3s ease-in-out;
   border-radius: 50%;
   background-color: #E2D7F4;
+  padding: 10px;
 }
 
 .btn-clss {  
@@ -26,12 +27,16 @@ body {
 }
 
 #button-container {
-	background-color: #8D1689;
+	/*background-color: #8D1689;*/
 }
 
 .jumbotron {
 	text-align: center;
-	background-color: #5D29B7;
+	/*background-color: #5D29B7;*/
+	background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzZ7IZQQHfUJOnwg6KIa9ifa5eGf5Xjm2PdCFklowZArqlxXcy");
+	background-size: cover;
+
+
 
 }
 
@@ -42,6 +47,10 @@ h1 {
 
 .rw-content {
 	height: 40%;
+}
+
+h2 {
+	color: #ffffff;
 }
 /*/////
 $colors:

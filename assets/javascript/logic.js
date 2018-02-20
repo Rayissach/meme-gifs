@@ -72,7 +72,7 @@ $(".btn-clss").on("click", function() {
 
             var showDiv = $("<div>")
 
-            var p = $("<p>").text("Rating: " + results[i].rating);
+            var p = $("<h2>").text("Rating: " + results[i].rating);
 
             var tvImage = $("<img>");
 
