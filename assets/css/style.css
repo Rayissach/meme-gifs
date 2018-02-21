@@ -52,6 +52,12 @@ h1 {
 h2 {
 	color: #ffffff;
 }
+
+#gif-content div {
+	float: left;
+	margin: 8px;
+	text-align: center;
+}
 /*/////
 $colors:
 links/light

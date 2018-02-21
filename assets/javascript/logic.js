@@ -1,4 +1,4 @@
-var tvShowsArr = ["The-Amazing World of Gumball",
+var tvShowsArr = ["The Amazing World of Gumball",
     "Grim Adventures of Billy and Mandy",
     "Spongebob",
     "Teen Titans",
@@ -23,7 +23,7 @@ function btnAdd() {
 
     for (var i = 0; i < tvShowsArr.length; i++) {
 
-        console.log(tvShowsArr[i])
+        console.log(tvShowsArr[i]);
 
         $(".gif-btn-class").append("<button class='btn-clss grow btns-hit' data-show='" + tvShowsArr[i] + "'>" + tvShowsArr[i] + "</button>");
 
@@ -31,7 +31,7 @@ function btnAdd() {
 
 }
 
-$("#buttonSearch").on("click", function(event) {
+$("#buttonSearch").on("click", function(event, dataInfo) {
 
     event.preventDefault();
 
@@ -40,13 +40,14 @@ $("#buttonSearch").on("click", function(event) {
     tvShowsArr.push(shows);
 
     btnAdd();
+    dataInfo();
 });
 
 btnAdd();
 
 
 
-$(".btn-clss").on("click", function() {
+$(document).on("click", ".btn-clss", function dataInfo() {
     //Query url with api key
     var tvShows = $(this).attr("data-show");
 
@@ -59,6 +60,8 @@ $(".btn-clss").on("click", function() {
 
     console.log(tvShowsArr);
     console.log(queryURL);
+
+    $("#gif-content").empty();
 
     $.ajax({
         url: queryURL,
@@ -94,9 +97,10 @@ $(".btn-clss").on("click", function() {
             $("#gif-content").prepend(showDiv);
         };
         ////////////////////////////////////////
-
+        
         ///////////////////////////////////////////
     });
+
 });
 
 $("body").on("click", ".gif", function() {
@@ -115,4 +119,3 @@ $("body").on("click", ".gif", function() {
         $(this).attr('src', src.replace(/\_s.gif/i, ".gif"))
     }
 });
-
