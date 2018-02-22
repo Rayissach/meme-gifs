@@ -54,7 +54,7 @@ $(document).on("click", ".btn-clss", function dataInfo() {
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         tvShows +
         "&api_key=ICK0911MJ3OSyCVmYJsRtqgKZ0CzLbhW" +
-        "&limit=10&rating=G"
+        "&limit=10&rating=PG"
 
 
 

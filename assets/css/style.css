@@ -58,24 +58,11 @@ h2 {
 	margin: 8px;
 	text-align: center;
 }
-/*/////
-$colors:
-links/light
-#E2D7F4,
 
- background header
-#5D29B7,
-
- icon/ buttons
-#8D1689,
-
- boldtext red
-#C32D50,
-
- footer dark
-#300D15;
-
-////*/
+#gif-content div { 
+background: rgb(54, 25, 25); 
+background: rgba(54, 25, 25, .6); 
+}
 
 /*//////////////////////////////*/
 
